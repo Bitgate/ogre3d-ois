@@ -7,6 +7,9 @@
 Cross Platform Object Oriented Input Lib System. Meant to be very robust and
 compatiable with many systems and operating systems.
 
+## Modifications
+This library has been improved and modified by Bitgate, Inc. to fix bugs, improve performance or otherwise add new features to keep this library moving forward, as it is still the advised way to handle input by [Ogre3D](https://www.ogre3d.org/). We've also attempted to improve the usability of the library by tweaking the CMake files.
+
 ## Todo
 
 - Merge pull requests/patches send in over time
@@ -26,7 +29,7 @@ To build and install:
 
 ### Windows
 
-Dependencies: DirectInput 8
+Dependencies: DirectX 9 (may downloaded from [Microsoft's official page](https://www.microsoft.com/en-us/download/details.aspx?id=6812))
 
 For Visual Studio:
 
