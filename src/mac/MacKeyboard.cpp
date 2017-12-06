@@ -33,6 +33,7 @@
 
 #include <list>
 #include <string>
+#include <iostream>
 
 const EventTypeSpec DownSpec[] = {{kEventClassKeyboard, kEventRawKeyDown},	//non - repeats
 							{kEventClassKeyboard, kEventRawKeyRepeat}}; //repeats
@@ -178,7 +179,6 @@ std::string& MacKeyboard::getAsString( KeyCode key )
     CGEventSourceRef sref = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
     CGEventRef ref = CGEventCreateKeyboardEvent(sref, deviceKeycode, true);
     CGEventKeyboardGetUnicodeString(ref, sizeof(unicodeString) / sizeof(*unicodeString), &actualStringLength, unicodeString);
-//    NSLog([NSString stringWithFormat:@"%C\n", unicodeString[0]]);
     getString = unicodeString[0];
 
 	return getString;
@@ -190,7 +190,6 @@ void MacKeyboard::setBuffered( bool buffered )
 	mBuffered = buffered;
 }
 
-#include <iostream>
 //-------------------------------------------------------------------//
 void MacKeyboard::_keyDownCallback( EventRef theEvent )
 {
@@ -339,6 +338,7 @@ void MacKeyboard::copyKeyStates( char keys[256] ) const
 	memcpy( keys, KeyBuffer, 256 );
 }
 
+void MacKeyboard::
 
 
 //-------------------------------------------------------------------//
