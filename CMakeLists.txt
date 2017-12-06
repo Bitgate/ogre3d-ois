@@ -64,8 +64,15 @@ if (WIN32)
     # if not, the user can set it themselves
     set(DXSDK_DIR "$ENV{DXSDK_DIR}" CACHE PATH "Location of the DirectX SDK on your system.")
 
+	# Attempt the most common Direct X directory and check for the required included files.
+	if(NOT DXSDK_DIR)
+		if(EXISTS "C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9.h")
+			set(DXSDK_DIR "C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)")
+		endif()
+	endif()
+
     if ("${DXSDK_DIR}" STREQUAL "")
-        MESSAGE(FATAL_ERROR "Could not locate DirectX SDK on this system")
+        MESSAGE(FATAL_ERROR "Could not locate DirectX SDK on this system.\nYou can download DirectX 9 at: https://www.microsoft.com/en-us/download/details.aspx?id=6812.")
     else()
         MESSAGE("Found DirectX SDK at ${DXSDK_DIR}")
     endif()
@@ -143,7 +150,6 @@ if (WIN32)
 endif()
 
 if(UNIX)
-
     if (NOT APPLE)
         add_dependencies(OIS X11)
         target_link_libraries(OIS X11)
